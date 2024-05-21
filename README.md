@@ -4,4 +4,6 @@
 
 2:Validation(Formik and YUP) and Authentication(firebase)
 
-3:
+3: Routing Impemented (with error page)
+
+4:
