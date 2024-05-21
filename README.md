@@ -2,4 +2,6 @@
 
 1:Sign-up and Sign-in
 
-2:Validation and Authentication(firebase)
+2:Validation(Formik and YUP) and Authentication(firebase)
+
+3:
