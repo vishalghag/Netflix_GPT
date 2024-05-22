@@ -9,3 +9,8 @@ export const signUpSchema = Yup.object({
     .max(10)
     .required("Please enter 10 digit phone number"),
 });
+
+export const signInSchema = Yup.object({
+  email: Yup.string().email().required("Please enter your email"),
+  password: Yup.string().min(6).required("Please enter your password"),
+});

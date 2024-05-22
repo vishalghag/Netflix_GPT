@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import { NETFLIX_BACKGROUND } from "../utils/constant";
+import { NETFLIX_BACKGROUND, USER_AVATAR } from "../utils/constant";
 import CommonInput from "../common/CommonInput";
 import CommonBtn from "../common/CommonBtn";
 import { useFormik } from "formik";
-import { signUpSchema } from "../schemas";
+import { signInSchema, signUpSchema } from "../schemas";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { database } from "../utils/firebase";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import routes from "../PageRouters/routes.json";
 
 const initialValues = {
   name: "",
@@ -14,16 +24,62 @@ const initialValues = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [isSignInForm, setIsSignInForm] = useState(true);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
-      validationSchema: signUpSchema,
+      validationSchema: isSignInForm ? signInSchema : signUpSchema,
       onSubmit: (values, action) => {
-        console.log(values);
+        if (!isSignInForm) {
+          createUserWithEmailAndPassword(
+            database,
+            values.email,
+            values.password
+          )
+            .then((credentials) => {
+              console.log(credentials, "cred");
+              updateProfile(credentials, {
+                displayName: values.name,
+                photoURL: USER_AVATAR,
+              })
+                .then(() => {
+                  // Profile updated!
+                  // ...
+                })
+                .catch((error) => {
+                  // An error occurred
+                  // ...
+                });
+              toast.success("Sign-in SuccessFull!");
+              navigate(`${routes.BROWSE}`);
+            })
+            .catch((err) => {
+              // alert(err.code);
+              toast.error(err.code);
+              // setIsSignInForm(!isSignInForm);
+            });
+        } else {
+          console.log("sigin");
+          signInWithEmailAndPassword(database, values.email, values.password)
+            .then((credentials) => {
+              console.log(credentials, "credSignin");
+              toast.success("Sign-in SuccessFull!");
+              navigate(`${routes.BROWSE}`);
+            })
+            .catch((err) => {
+              toast.error(err.code);
+              // setIsSignInForm(!isSignInForm);
+            });
+        }
         action.resetForm();
       },
     });
+
+  useEffect(() => {
+    document.title = "Netflix | Sign-In & Sign-Up";
+  }, []);
 
   const toggleSignInFn = () => {
     setIsSignInForm(!isSignInForm);
