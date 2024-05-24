@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import routes from "../PageRouters/routes.json";
+import { useDispatch } from "react-redux";
+import { addUsers } from "../utils/userSlice";
 
 const initialValues = {
   name: "",
@@ -25,6 +27,7 @@ const initialValues = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -32,6 +35,7 @@ const Login = () => {
       initialValues: initialValues,
       validationSchema: isSignInForm ? signInSchema : signUpSchema,
       onSubmit: (values, action) => {
+        console.log(typeof values.name, "name");
         if (!isSignInForm) {
           createUserWithEmailAndPassword(
             database,
@@ -39,21 +43,28 @@ const Login = () => {
             values.password
           )
             .then((credentials) => {
+              const users = credentials.user;
               console.log(credentials, "cred");
-              updateProfile(credentials, {
+              updateProfile(users, {
                 displayName: values.name,
                 photoURL: USER_AVATAR,
               })
                 .then(() => {
-                  // Profile updated!
-                  // ...
+                  const { uid, email, displayName } = database.currentUser;
+                  dispatch(
+                    addUsers({
+                      uid: uid,
+                      email: email,
+                      displayName: displayName,
+                    })
+                  );
+                  toast.success("Sign-in SuccessFull!");
+                  navigate(`${routes.BROWSE}`);
                 })
                 .catch((error) => {
                   // An error occurred
                   // ...
                 });
-              toast.success("Sign-in SuccessFull!");
-              navigate(`${routes.BROWSE}`);
             })
             .catch((err) => {
               // alert(err.code);
