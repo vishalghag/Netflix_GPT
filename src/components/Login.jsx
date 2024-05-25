@@ -13,8 +13,6 @@ import {
 import { database } from "../utils/firebase";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
-import routes from "../PageRouters/routes.json";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../utils/userSlice";
 
@@ -26,7 +24,6 @@ const initialValues = {
 };
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -59,7 +56,7 @@ const Login = () => {
                     })
                   );
                   toast.success("Sign-in SuccessFull!");
-                  navigate(`${routes.BROWSE}`);
+                  // navigate(`${routes.BROWSE}`);
                 })
                 .catch((error) => {
                   // An error occurred
@@ -77,7 +74,7 @@ const Login = () => {
             .then((credentials) => {
               console.log(credentials, "credSignin");
               toast.success("Sign-in SuccessFull!");
-              navigate(`${routes.BROWSE}`);
+              // navigate(`${routes.BROWSE}`);
             })
             .catch((err) => {
               toast.error(err.code);
