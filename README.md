@@ -14,3 +14,5 @@
 it will not redirect to login page if not sign out
 
 7: getted data from TMDB website Now Playing from movie list
+
+8:

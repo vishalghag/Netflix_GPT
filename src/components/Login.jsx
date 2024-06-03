@@ -32,7 +32,6 @@ const Login = () => {
       initialValues: initialValues,
       validationSchema: isSignInForm ? signInSchema : signUpSchema,
       onSubmit: (values, action) => {
-        console.log(typeof values.name, "name");
         if (!isSignInForm) {
           createUserWithEmailAndPassword(
             database,
@@ -41,7 +40,6 @@ const Login = () => {
           )
             .then((credentials) => {
               const users = credentials.user;
-              console.log(credentials, "cred");
               updateProfile(users, {
                 displayName: values.name,
                 photoURL: USER_AVATAR,
@@ -72,7 +70,6 @@ const Login = () => {
           console.log("sigin");
           signInWithEmailAndPassword(database, values.email, values.password)
             .then((credentials) => {
-              console.log(credentials, "credSignin");
               toast.success("Sign-in SuccessFull!");
               // navigate(`${routes.BROWSE}`);
             })
