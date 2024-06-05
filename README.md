@@ -15,4 +15,8 @@ it will not redirect to login page if not sign out
 
 7: getted data from TMDB website Now Playing from movie list
 
-8:
+8: like movie and recently added functionality added
+
+9: slick slider added for better scroll-bar effect
+
+10:

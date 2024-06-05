@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addLikedMovies } from "./movieSlice";
 
 const HeartIcon = ({ movieLikeID }) => {
-  const likedMovies = useSelector((store) => store.movies.likedMovies);
+  const likedMovies = useSelector((store) => store.movies?.likedMovies);
   const dispatch = useDispatch();
 
   const toggleLikedMovie = (movieId) => {
