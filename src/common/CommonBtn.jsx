@@ -6,7 +6,7 @@ const CommonBtn = ({ buttonName, buttonOnClick, btnColor, btnTextColor }) => {
       <button
         onClick={buttonOnClick}
         style={{ backgroundColor: `${btnColor}`, color: `${btnTextColor}` }}
-        className=" block bg-red-600 text-white py-2 px-8 rounded-md shadow-lg transform transition-transform duration-200 ease-in-out active:scale-95 w-auto font-medium"
+        className=" block bg-red-600 text-white py-2 px-8 rounded-md shadow-lg transform transition-transform duration-200 ease-in-out active:scale-95 w-auto font-medium m-2"
       >
         {buttonName}
       </button>

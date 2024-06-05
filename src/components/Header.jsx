@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { LOGO, USER_AVATAR } from "../utils/constant";
+import { HEART_ICON, LOGO, USER_AVATAR } from "../utils/constant";
 import CommonBtn from "../common/CommonBtn";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { database } from "../utils/firebase";
