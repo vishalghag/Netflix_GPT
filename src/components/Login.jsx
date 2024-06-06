@@ -53,29 +53,22 @@ const Login = () => {
                       displayName: displayName,
                     })
                   );
-                  toast.success("Sign-in SuccessFull!");
-                  // navigate(`${routes.BROWSE}`);
+                  toast.success("Sign-up Successful!");
                 })
                 .catch((error) => {
-                  // An error occurred
-                  // ...
+                  toast.error(error.code);
                 });
             })
             .catch((err) => {
-              // alert(err.code);
               toast.error(err.code);
-              // setIsSignInForm(!isSignInForm);
             });
         } else {
-          console.log("sigin");
           signInWithEmailAndPassword(database, values.email, values.password)
             .then((credentials) => {
-              toast.success("Sign-in SuccessFull!");
-              // navigate(`${routes.BROWSE}`);
+              toast.success("Sign-in Successful!");
             })
             .catch((err) => {
               toast.error(err.code);
-              // setIsSignInForm(!isSignInForm);
             });
         }
         action.resetForm();
@@ -100,12 +93,12 @@ const Login = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="flex justify-center items-center h-full">
+      <div className="flex justify-center items-center h-full px-4 sm:px-0">
         <form
-          className="relative p-12 bg-black bg-opacity-75 w-96 py-32 rounded m-auto"
+          className="relative p-6 bg-black bg-opacity-75 w-full max-w-md py-12 rounded-md sm:p-12 sm:py-24 m-auto"
           onSubmit={handleSubmit}
         >
-          <h1 className=" text-3xl text-white mb-10 font-bold">
+          <h1 className="text-2xl sm:text-3xl text-white mb-6 font-bold">
             {isSignInForm ? "Sign-In" : "Sign-Up"}
           </h1>
           <CommonInput
@@ -156,13 +149,12 @@ const Login = () => {
           )}
           <CommonBtn buttonName={isSignInForm ? "Sign-in" : "Sign-up"} />
 
-          <p className=" text-white text-md font-normal float-start mt-4">
-            {isSignInForm ? " New to Netflex?" : "Already a User? "}
+          <p className="text-white text-sm sm:text-md font-normal mt-4">
+            {isSignInForm ? "New to Netflix?" : "Already a User?"}
             <span
-              className=" font-medium text-red-600 cursor-pointer "
+              className="font-medium text-red-600 cursor-pointer ml-1"
               onClick={toggleSignInFn}
             >
-              {" "}
               {isSignInForm ? "Sign-up now" : "Sign-In"}
             </span>
           </p>

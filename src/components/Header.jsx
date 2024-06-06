@@ -17,10 +17,10 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(database)
       .then(() => {
-        toast.success("user logout successfully");
+        toast.success("User logged out successfully");
       })
       .catch((error) => {
-        toast.error(error);
+        toast.error(error.message);
       });
   };
 
@@ -40,16 +40,16 @@ const Header = () => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [dispatch, navigate]);
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-t from-black/60 z-10 flex justify-between items-center">
-      <img className="w-44" src={LOGO} alt="logo" />
+    <div className="absolute w-full h-auto px-4 py-2 bg-gradient-to-t from-black/60 z-10 flex justify-between items-center sm:px-8">
+      <img className="w-32 sm:w-44" src={LOGO} alt="logo" />
       <div className="flex items-center ml-auto p-2">
-        {user !== null && (
+        {user && (
           <>
             <img
-              className="mr-4 w-12 h-12 cursor-pointer"
+              className="mr-4 w-8 h-8 sm:w-12 sm:h-12 cursor-pointer"
               src={USER_AVATAR}
               alt="avatar"
             />

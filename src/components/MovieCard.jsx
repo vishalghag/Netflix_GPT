@@ -9,24 +9,24 @@ const MovieCard = ({ posterPath, movieDetails }) => {
 
   const closeModalFn = () => {
     setModalOpen(false);
-    document.title = `Netflix | ${"Movies"}`;
+    document.title = `Netflix | Movies`;
   };
 
   const onViewedVideoFn = (movieViewed) => {
     const { original_title } = movieViewed;
     document.title = `Netflix | ${original_title}`;
     setPopUpOpenData(movieDetails);
-    setModalOpen(!modalOpen);
+    setModalOpen(true);
   };
 
   return (
     <>
-      <div className="relative w-48 pr-4">
+      <div className="relative w-full sm:w-48 pr-4">
         <img
           alt="movie"
           src={`${IMG_CDN}${posterPath}`}
           onClick={() => onViewedVideoFn(movieDetails)}
-          className="cursor-pointer"
+          className="cursor-pointer w-full"
         />
         <div className="absolute top-0 right-0 m-2">
           <HeartIcon movieLikeID={movieDetails} />

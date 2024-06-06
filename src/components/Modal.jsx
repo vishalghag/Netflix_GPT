@@ -19,7 +19,7 @@ const Modal = ({ closeModalFn, popUpOpenData }) => {
 
   const WatchMoreFn = () => {
     toast.success(
-      "Once Clicked on Watch more it get added to recently watch video "
+      `Once Clicked on Watch more ${original_title} added to recently watch video `
     );
 
     dispatch(
@@ -41,12 +41,6 @@ const Modal = ({ closeModalFn, popUpOpenData }) => {
       document.body.style.overflow = "auto";
     };
   }, []);
-
-  // useEffect(() => {
-  //   if (original_title) {
-  //     document.title = `Netflix | ${"vishal"}`;
-  //   }
-  // }, [original_title]);
 
   return (
     <>
