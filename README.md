@@ -17,6 +17,6 @@ it will not redirect to login page if not sign out
 
 8: like movie and recently added functionality added
 
-9: slick slider added for better scroll-bar effect
+9: click on movie card pop-up open up with showing detail of movie
 
-10:
+10: dynamic title added which changes according to condition
