@@ -1,0 +1,59 @@
+.slick_container1 {
+  max-width: 48rem;
+  margin: auto;
+  height: auto;
+}
+
+.inside_slider {
+  margin-top: 10%;
+}
+
+.slide_item {
+  width: auto;
+  height: auto;
+  background-color: aquamarine;
+  border-radius: 10px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+.titleSection {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+h3.title {
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-family: italic;
+  font-weight: 200;
+  color: gray;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile > .clock {
+  width: 70px;
+  border-radius: 44px;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}

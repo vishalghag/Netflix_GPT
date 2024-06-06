@@ -25,11 +25,17 @@ const movieSlice = createSlice({
       state.upComing = action.payload;
     },
     addRecentlyViewedVideo: (state, action) => {
-      // Prepend the new movie to the array to keep the most recent first
-      state.recentlyViewedVideos = [
-        action.payload,
-        ...state.recentlyViewedVideos,
-      ].slice(0, 10); // Limit to 10 recent movies
+      const newMovie = action.payload;
+      // Check if the movie ID is not already in the recently viewed videos
+      if (
+        !state.recentlyViewedVideos.some((movie) => movie.id === newMovie.id)
+      ) {
+        // Prepend the new movie to the array to keep the most recent first
+        state.recentlyViewedVideos = [
+          newMovie,
+          ...state.recentlyViewedVideos,
+        ].slice(0, 10); // Limit to 10 recent movies
+      }
     },
     addLikedMovies: (state, action) => {
       const movieId = action.payload;
