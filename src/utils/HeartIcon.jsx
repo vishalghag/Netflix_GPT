@@ -1,13 +1,21 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addLikedMovies } from "./movieSlice";
+import { toast } from "react-toastify";
 
 const HeartIcon = ({ movieLikeID }) => {
+  const { original_title } = movieLikeID;
   const likedMovies = useSelector((store) => store.movies?.likedMovies);
   const dispatch = useDispatch();
 
   const toggleLikedMovie = (movieId) => {
+    const isLiked = likedMovies.includes(movieId);
     dispatch(addLikedMovies(movieId));
+    if (isLiked) {
+      toast.success(`Movie ${original_title} removed from liked list`);
+    } else {
+      toast.success(`Movie ${original_title} added to liked list`);
+    }
   };
 
   const isLiked = likedMovies.includes(movieLikeID.id);
