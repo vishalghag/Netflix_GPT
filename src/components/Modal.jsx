@@ -31,6 +31,7 @@ const Modal = ({ closeModalFn, popUpOpenData }) => {
         id,
       })
     );
+    document.title = `Netflix | ${"Movies"}`;
     closeModalFn();
   };
 
@@ -40,6 +41,12 @@ const Modal = ({ closeModalFn, popUpOpenData }) => {
       document.body.style.overflow = "auto";
     };
   }, []);
+
+  // useEffect(() => {
+  //   if (original_title) {
+  //     document.title = `Netflix | ${"vishal"}`;
+  //   }
+  // }, [original_title]);
 
   return (
     <>
@@ -54,7 +61,7 @@ const Modal = ({ closeModalFn, popUpOpenData }) => {
             onClick={closeModalFn}
           />
         </div>
-        <div className="flex justify-center mt-[10%] w-full">
+        <div className="flex justify-center mt-[6%] w-full">
           <h1 className="text-2xl font-medium">{original_title}</h1>
         </div>
         <div className="w-full mt-3">
