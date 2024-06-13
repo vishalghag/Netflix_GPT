@@ -1,22 +1,38 @@
 # Implented in Netflix-GPT React App
 
-1: Sign-up and Sign-in
+Here's a refined version of your points for the README:
 
-2: Validation(Formik and YUP) and Authentication(firebase)
+1. **User Authentication**:
 
-3: Routing Impemented (with error page)
+   - Implemented Sign-up and Sign-in functionality.
+   - Used Formik and YUP for form validation.
+   - Integrated Firebase for authentication.
 
-4: Redux used for stroing user data
+2. **Routing**:
 
-5: toasty library used for showing state of user beautifully
+   - Set up routing with error handling for non-existent pages.
 
-6: If user is not login it is not redirected to browse page vice versa in browse page also
-it will not redirect to login page if not sign out
+3. **State Management**:
 
-7: getted data from TMDB website Now Playing from movie list
+   - Utilized Redux for State Management.
 
-8: like movie and recently added functionality added
+4. **Notifications**:
 
-9: click on movie card pop-up open up with showing detail of movie
+   - Integrated Toasty library to display user state notifications.
 
-10: dynamic title added which changes according to condition
+5. **Navigation**:
+
+   - Ensured users cannot access the browse page without logging in.
+   - Prevented navigation back to the login page from the browse page without signing out.
+
+6. **Data Integration**:
+
+   - Fetched "Now Playing" movie data from the TMDB website.
+
+7. **Features**:
+
+   - Added functionality to like movies and view recently added movies.
+   - Enabled movie card clicks to open a pop-up with detailed movie information.
+
+8. **Dynamic Titles**:
+   - Implemented dynamic titles that change based on the current page or action.
